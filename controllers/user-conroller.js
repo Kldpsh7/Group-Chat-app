@@ -27,3 +27,7 @@ module.exports.postSignUp = async (req,res)=>{
         }
     }
 }
+
+module.exports.getLogin = (req,res)=>{
+    res.sendFile(path.join(__dirname,'../','views','login.html'));
+}
