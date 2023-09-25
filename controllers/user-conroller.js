@@ -1,6 +1,8 @@
 const path = require('path');
 const User = require('../models/users');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config()
 
 
 module.exports.getSignUp = (req,res)=>{
@@ -13,7 +15,7 @@ module.exports.postSignUp = async (req,res)=>{
         res.status(401).json({message:'Bad Request'});
     }else{
         try{
-            let existingUser = await User.findOne({where:{email:req.body.email}})
+            const existingUser = await User.findOne({where:{email:req.body.email}})
             if(existingUser){
                 res.status(401).json({message:'User with this email already exists, login'})
             }else{
@@ -30,4 +32,32 @@ module.exports.postSignUp = async (req,res)=>{
 
 module.exports.getLogin = (req,res)=>{
     res.sendFile(path.join(__dirname,'../','views','login.html'));
+}
+
+module.exports.postLogin = async (req,res)=>{
+    const badReqest = [null,undefined,""," "];
+    if(badReqest.includes(req.body.email) || badReqest.includes(req.body.password)){
+        res.status(401).json({message:'Bad Request'});
+    }else{
+        try{
+            const user = await User.findOne({where:{email:req.body.email}});
+            if(user){
+                bcrypt.compare(req.body.password,user.password,(err,success)=>{
+                    if(success){
+                        res.status(201).json({message:'Login Successful',token:jwtCrypt(user.id,user.name,user.email,user.phone)})
+                    }else{
+                        res.status(401).json({message:'Wrong Password'});
+                    }
+                })
+            }else{
+                res.status(404).json({message:'User with this email dont exist, SignUp'});
+            }
+        }catch(err){
+
+        }
+    }
+}
+
+function jwtCrypt(id,name,email,phone){
+    return jwt.sign({id,name,email,phone},process.env.JWTSECRET)
 }
