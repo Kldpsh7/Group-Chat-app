@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Chat</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="page-heading-div" id="page-heading-div">
+        <h1 class="page-heading" id="page-heading">Group Chat</h1>
+    </div>
+    <div class="message-div" id="message-div">
+        <ul class="message-ul" id="message-ul">
+        </ul>
+    </div>
+    <div class="write-message-div" id="write-message-div">
+        <form onclick="sendMessage(event)" class="new-message" id="new-message">
+            <label for="message" class="label">New Message</label>
+            <input type="text" class="message" id="message" name="message">
+            <button type="submit" class="send-btn" id="send-btn">Send</button>
+        </form>
+    </div>
+</body>
+<script src="../chat.js"></script>
+</html>
