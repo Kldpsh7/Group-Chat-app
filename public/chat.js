@@ -59,8 +59,13 @@ async function sendMessage(e){
     try{
         const obj = {message: e.target.message.value};
         const res = await axios.post('/chat/send',obj);
+        e.target.message.value='';
         loadChat();
     }catch(err){
         console.log(err)
     }
 }
+
+setInterval(()=>{
+    loadChat()
+},1000)
