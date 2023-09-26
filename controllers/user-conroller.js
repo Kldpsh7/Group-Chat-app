@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
 
-module.exports.getSignUp = (req,res)=>{
+module.exports.getSignUpPage = (req,res)=>{
     res.sendFile(path.join(__dirname,'../','views','signup.html'));
 }
 
@@ -30,7 +30,7 @@ module.exports.postSignUp = async (req,res)=>{
     }
 }
 
-module.exports.getLogin = (req,res)=>{
+module.exports.getLoginPage = (req,res)=>{
     res.sendFile(path.join(__dirname,'../','views','login.html'));
 }
 

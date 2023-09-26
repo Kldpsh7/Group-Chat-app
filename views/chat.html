@@ -15,7 +15,7 @@
         </ul>
     </div>
     <div class="write-message-div" id="write-message-div">
-        <form onclick="sendMessage(event)" class="new-message" id="new-message">
+        <form onsubmit="sendMessage(event)" class="new-message" id="new-message">
             <label for="message" class="label">New Message</label>
             <input type="text" class="message" id="message" name="message">
             <button type="submit" class="send-btn" id="send-btn">Send</button>
