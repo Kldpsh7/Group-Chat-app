@@ -8,7 +8,6 @@ module.exports.authenticate = async(req,res,next)=>{
         const decodedToken = jwt.decode(token,process.env.JWTSECRET);
         const user = await User.findByPk(decodedToken.id);
         if(user){
-            console.log(user);
             req.user=user;
             next();
         }else{

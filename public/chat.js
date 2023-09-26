@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded',()=>{
     checkLogin();
+    let localChat = JSON.parse(localStorage.getItem('chat'));
+    if(loadChat){
+        showOnScreen(localChat);
+    }
 })
 
 axios.defaults.headers.common['auth'] = localStorage.getItem('token');
@@ -18,24 +22,38 @@ function checkLogin(){
 
 async function loadChat(){
     try{
-        const res = await axios.get('/chat/loadChat');
-        const chatList = document.getElementById('message-ul');
-        chatList.innerHTML='';
-        for(let item of res.data){
-            let chat = document.createElement('li');
-            chat.className='chat';
-            let sender = document.createElement('span');
-            sender.className='sender';
-            sender.innerHTML=item.sendername+'  >>  ';
-            chat.appendChild(sender);
-            let messagBody = document.createElement('span');
-            messagBody.className='message-body';
-            messagBody.innerHTML=item.message;
-            chat.appendChild(messagBody)
-            chatList.appendChild(chat);
+        let localChat = JSON.parse(localStorage.getItem('chat'));
+        let lastMsgId;
+        if(localChat){
+            lastMsgId = localChat[localChat.length-1].id;
+        }else{
+            localChat=[];
+            lastMsgId = 0;
         }
+        const res = await axios.get(`/chat/loadChat?lastMsgId=${lastMsgId}`);
+        showOnScreen(res.data);
+        console.log(res.data);
+        localChat = localChat.concat(res.data);
+        localStorage.setItem('chat',JSON.stringify(localChat));
     }catch(err){
         console.log(err);
+    }
+}
+
+function showOnScreen(data){
+    const chatList = document.getElementById('message-ul');
+    for(let item of data){
+        let chat = document.createElement('li');
+        chat.className='chat';
+        let sender = document.createElement('span');
+        sender.className='sender';
+        sender.innerHTML=item.sendername+'  >>  ';
+        chat.appendChild(sender);
+        let messagBody = document.createElement('span');
+        messagBody.className='message-body';
+        messagBody.innerHTML=item.message;
+        chat.appendChild(messagBody)
+        chatList.appendChild(chat);
     }
 }
 
