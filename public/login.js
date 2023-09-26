@@ -9,7 +9,7 @@ async function login(e){
         document.body.innerHTML+=`<p style="font-family:courier; color:green">${res.data.message}</p>`;
         localStorage.setItem('token',res.data.token);
         setTimeout(() => {
-            document.location.href='/chat/chat';
+            document.location.href='/chat/home';
             document.body.lastElementChild.remove();
         }, 1000);
     }catch(err){

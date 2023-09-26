@@ -9,7 +9,7 @@ const chatRoutes = require('./routes/chat-routes');
 const sequelize = require('./database/db');
 const User = require('./models/users');
 const Chat = require('./models/chats');
-const exp = require('constants');
+const Group = require('./models/group');
 
 const app = express()
 
@@ -20,8 +20,11 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/chat',chatRoutes);
 app.use('/user',userRoutes);
 
-Chat.belongsTo(User);
-User.hasMany(Chat);
+Chat.belongsTo(Group);
+Group.hasMany(Chat);
+
+Group.belongsTo(User);
+User.hasMany(Group);
 
 sequelize.sync().then(()=>{
     const server = app.listen(3000)

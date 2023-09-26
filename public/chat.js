@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded',()=>{
+    localStorage.removeItem('chat')
     checkLogin();
-    let localChat = JSON.parse(localStorage.getItem('chat'));
-    if(loadChat){
-        showOnScreen(localChat);
-    }
 })
 
 axios.defaults.headers.common['auth'] = localStorage.getItem('token');
+axios.defaults.headers.common['grpid'] = localStorage.getItem('grpid');
 
 function checkLogin(){
     const token = localStorage.getItem('token');
@@ -24,7 +22,7 @@ async function loadChat(){
     try{
         let localChat = JSON.parse(localStorage.getItem('chat'));
         let lastMsgId;
-        if(localChat){
+        if(localChat && localChat.length>0){
             lastMsgId = localChat[localChat.length-1].id;
         }else{
             localChat=[];
@@ -32,7 +30,7 @@ async function loadChat(){
         }
         const res = await axios.get(`/chat/loadChat?lastMsgId=${lastMsgId}`);
         showOnScreen(res.data);
-        console.log(res.data);
+        console.log(res.data)
         localChat = localChat.concat(res.data);
         localStorage.setItem('chat',JSON.stringify(localChat));
     }catch(err){
