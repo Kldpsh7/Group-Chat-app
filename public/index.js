@@ -20,15 +20,12 @@ function checkLogin(){
 async function getGroups(){
     const res = await axios.get('/chat/group');
     console.log(res.data)
-    const groupList = document.getElementById('groups-ul');
-    groupList.innerHTML='<h4>Groups Created by You</h4>';
-    showGroupsOnScreen(res.data.createdGroups);
-    groupList.innerHTML+='<h4>Groups Joined by You';
-    showGroupsOnScreen(res.data.joinedGroups);
+    showGroupsOnScreen(res.data);
 }
 
 function showGroupsOnScreen(data){
     const groupList = document.getElementById('groups-ul');
+    groupList.innerHTML='';
     for(let item of data){
         let li = document.createElement('li');
         li.id=item.id;
@@ -73,7 +70,6 @@ async function createGroup(e){
 
 document.getElementById('groups-ul').addEventListener('click',(e)=>{
     if(e.target.className=='group-list-item'){
-        console.log(e.target.id);
         localStorage.setItem('grpid',e.target.id);
         document.location.href='/chat/chat'
     }

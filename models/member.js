@@ -7,14 +7,6 @@ const Member = sequelize.define('member',{
         allowNull:false,
         autoIncrement:true,
         primaryKey:true
-    },
-    groupid:{
-        type:Sequelize.INTEGER,
-        allowNull:false
-    },
-    useremail:{
-        type:Sequelize.STRING,
-        allowNull:false
     }
 })
 

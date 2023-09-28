@@ -15,6 +15,7 @@ module.exports.authenticate = async(req,res,next)=>{
         }
     }catch(err){
         console.log(err);
+        res.redirect('/user/login')
         res.status(500).json({message:'Something Wrong'})
     }
 }

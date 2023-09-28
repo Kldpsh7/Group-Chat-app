@@ -11,6 +11,10 @@ const Group = sequelize.define('group',{
     name:{
         type:Sequelize.STRING,
         allowNull:false
+    },
+    createdBy:{
+        type:Sequelize.INTEGER,
+        allowNull:false
     }
 })
 
