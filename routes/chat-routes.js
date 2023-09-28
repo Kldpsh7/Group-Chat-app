@@ -15,5 +15,6 @@ router.get('/groupmembers',userAuth.authenticate,chatController.getGroupMembers)
 router.post('/changegroupname',userAuth.authenticate,chatController.postChangeGroupName);
 router.post('/addnewmember',userAuth.authenticate,chatController.postAddNewMember);
 router.post('/removemember',userAuth.authenticate,chatController.postRemoveMember);
+router.post('/media',userAuth.authenticate,chatController.postMedia);
 
 module.exports = router;

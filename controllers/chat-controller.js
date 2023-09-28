@@ -6,6 +6,10 @@ const Group = require('../models/group');
 const Sequelize = require('sequelize');
 const { error } = require('console');
 const Op = Sequelize.Op;
+const formidable = require('formidable');
+const s3Services = require('../services/s3-services');
+const fs = require('fs');
+const { json } = require('body-parser');
 
 module.exports.getChatPage = (req,res)=>{
     res.sendFile(path.join(__dirname,'../','views','chat.html'));
@@ -114,5 +118,20 @@ module.exports.postRemoveMember = async (req,res)=>{
     }catch(err){
         console.log(err)
         res.status(500).json({message:'Some Error Occured'});
+    }
+}
+
+module.exports.postMedia = async (req,res)=>{
+    const form = new formidable.IncomingForm();
+    try{
+        form.parse(req,async(error,fields,file)=>{
+            let filee=file.file[0];
+            let file1 = fs.readFileSync(filee.filepath);
+            const fileUrl = await s3Services.uploadToS3(file1,filee.originalFilename);
+            console.log(fileUrl);
+            res.status(201).json({url:fileUrl,message:'uploaded successfully'});
+        })
+    }catch(err){
+        console.log(err)
     }
 }

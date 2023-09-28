@@ -75,8 +75,19 @@ async function sendMessage(e){
     e.preventDefault();
     try{
         const obj = {message: e.target.message.value};
-        const res = await axios.post('/chat/send',obj);
-        e.target.message.value='';
+        let file = document.getElementById('fileupload').files[0];
+        if(e.target.message.value){
+            const res = await axios.post('/chat/send',obj);
+            e.target.message.value='';
+        }
+        else if(file){
+            const formData = new FormData();
+            formData.append('file',file)
+            const res = await axios.post('/chat/media',formData,{headers: {'Content-Type': 'multipart/form-data'}});
+            await axios.post('/chat/send/',{message:`<img src=${res.data.url} alt="photo" width="40%">`})
+        }else{
+            alert('Add message or file')
+        }
         loadChat();
     }catch(err){
         console.log(err)
