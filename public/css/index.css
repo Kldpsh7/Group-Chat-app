@@ -1,0 +1,91 @@
+body{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: #414141;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.page-heading-div{
+    border-radius: 10px;
+    background-color: aliceblue;
+    width: 20rem;
+    margin: auto;
+    color: #414141;
+}
+#logout-btn,
+#create-group-btn{
+    background-color: white;
+    color: blue;
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 3px;
+    width: 7rem;
+    margin:5px
+}
+#logout-btn:hover,
+#new-group-btn:hover,
+#create-group-btn:hover{
+    background-color: blue;
+    border: 1px solid white;
+    color: white;
+}
+#new-group-btn{
+    background-color: white;
+    color: blue;
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 3px;
+    width: 10rem;
+    margin:5px
+}
+.new-group-div{
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    margin: auto;
+    color: #414141;
+}
+.groups-ul{
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    margin: auto;
+    color: #414141;
+    list-style-type:none;
+    padding-top: 3px;
+    padding-bottom: 8px;
+}
+.your-groups{
+    background-color: #414141;
+    color: white;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 10rem;
+}
+li{
+    background-color: #c585fd;
+    border-radius: 10px;
+    margin:auto;
+    width: 70%;
+    font-size: 20px;
+    margin-top: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+li:hover{
+    background-color:#e1beff;
+    cursor:grab;
+}
+#new-group-form{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#group-name{
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 30%;
+    margin-left: 5px;
+}

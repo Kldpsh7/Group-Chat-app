@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/chat',chatRoutes);
 app.use('/user',userRoutes);
+app.use('/',(req,res)=>{res.redirect('/chat/home')});
 
 Chat.belongsTo(Group);
 Group.hasMany(Chat);

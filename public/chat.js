@@ -46,8 +46,9 @@ function showOnScreen(data){
         chat.className='chat';
         let sender = document.createElement('span');
         sender.className='sender';
-        sender.innerHTML=item.sendername+'  >>  ';
+        sender.innerHTML="&#160&#160"+item.sendername+"&#160&#160";
         chat.appendChild(sender);
+        chat.innerHTML+="<br>";
         let messagBody = document.createElement('span');
         messagBody.className='message-body';
         messagBody.innerHTML=item.message;
@@ -84,7 +85,7 @@ async function sendMessage(e){
             const formData = new FormData();
             formData.append('file',file)
             const res = await axios.post('/chat/media',formData,{headers: {'Content-Type': 'multipart/form-data'}});
-            await axios.post('/chat/send/',{message:`<img src=${res.data.url} alt="photo" width="40%">`})
+            await axios.post('/chat/send/',{message:`<object data=${res.data.url} width="250"></object>`})
         }else{
             alert('Add message or file')
         }
@@ -131,7 +132,7 @@ async function editGroup(){
         memberList.appendChild(li);
     }
     pageEditDiv.appendChild(memberList);
-    pageEditDiv.innerHTML += `<form id="new-member-form" onsubmit="addMember(event)"><label class="label" for="name">Add New Member</label><input type="email" id="add-new-member-email-input" name="email" class="new-mamber-input" placeholder="(Registered Email-Id of User)" required><button class="new-member-btn" type="submit">ADD</button></form>`
+    pageEditDiv.innerHTML += `<form id="new-member-form" onsubmit="addMember(event)"><label class="label" for="name">Add New Member</label><br><input type="email" id="add-new-member-email-input" name="email" class="new-mamber-input" placeholder="(Registered Email-Id of User)" required><button class="new-member-btn" type="submit">ADD</button></form>`
     pageEditDiv.innerHTML+='<button onclick="doneEditing()" id="close-editing-btn">DONE</button>'
     pageHeadingDiv.appendChild(pageEditDiv);
 }
@@ -191,6 +192,6 @@ function doneEditing(){
     document.getElementById('page-heading-div').lastElementChild.remove();
 }
 
-// setInterval(()=>{
-//     loadChat()
-// },1000)
+setInterval(()=>{
+    loadChat()
+},1000)

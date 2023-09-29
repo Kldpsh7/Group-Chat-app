@@ -26,6 +26,7 @@ async function getGroups(){
 function showGroupsOnScreen(data){
     const groupList = document.getElementById('groups-ul');
     groupList.innerHTML='';
+    groupList.innerHTML+='<h3 class="your-groups">Your Groups</h3>';
     for(let item of data){
         let li = document.createElement('li');
         li.id=item.id;
@@ -59,7 +60,6 @@ function logout(){
 
 async function createGroup(e){
     e.preventDefault();
-    console.log('create froup function called')
     try{
         const res = await axios.post('/chat/creategroup',{name:e.target.name.value});
         createGrpDiv.innerHTML='';

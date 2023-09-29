@@ -1,0 +1,112 @@
+body{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: #414141;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.page-heading-div{
+    border-radius: 10px;
+    background-color: aliceblue;
+    width: 20rem;
+    margin: auto;
+    color: #414141;
+}
+#group-edit-button{
+    background-color: white;
+    color: #ff3b3b;
+    border: 1px solid #ff3b3b;
+    border-radius: 25px;
+    float: right;
+    margin-top: 7px;
+    margin-right: 6px;
+}
+#group-edit-button:hover{
+    background-color: #ff3b3b;
+    color: white;
+}
+.new-message{
+    background-color: #00c295;
+    border-radius: 10px;
+    margin: auto;
+    width: 90%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#new-msg-label{
+    margin-top: 2px;
+}
+#fileuploadlabel{
+    margin-top: 2px;
+    margin-bottom: 15px;
+}
+.send-btn{
+    border-radius: 5px;
+    background-color: aliceblue;
+    color: black;
+    border: 1px solid black;
+    margin-top: 2px;
+}
+.send-btn:hover{
+    background-color: #15c012;
+}
+.message{
+    border-radius: 10px;
+    width:50%;
+    border: 1px solid black;
+    overflow:visible;
+    margin-bottom: 2px;
+}
+.message-div{
+    background-color: #9b9b9b;
+    width: 90%;
+    border-radius: 10px;
+    margin: auto;
+    padding-top: 2px;
+}
+.write-message-div{
+    width: 100%;
+    margin: auto;
+    padding-bottom: 5px;
+}
+.message-ul{
+    background-color: azure;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    color: #414141;
+    list-style: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.chat{
+    background-color: #2486d6;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+    padding-bottom: 5px;
+    margin-right: 5px;
+    display: table;
+}
+.sender{
+    font-size: 8px;
+    background-color: #414141;
+    width: 100%;
+    float: left;
+    text-align: left;
+    padding-top: 2px;
+    margin-top: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-bottom: 2px;
+}
+.message-body{
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Chat</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/chat.css">
 </head>
 <body>
     <div class="page-heading-div" id="page-heading-div">
@@ -13,15 +14,15 @@
     <div class="message-div" id="message-div">
         <ul class="message-ul" id="message-ul">
         </ul>
-    </div>
-    <div class="write-message-div" id="write-message-div">
-        <form onsubmit="sendMessage(event)" class="new-message" id="new-message">
-            <label for="message" class="label">New Message</label>
-            <input type="text" class="message" id="message" name="message">
-            <label for="fileupload" class="label">&#128248</label>
-            <input type="file" id="fileupload" name="fileupload" style="display: none;">
-            <button type="submit" class="send-btn" id="send-btn">Send</button>
-        </form>
+        <div class="write-message-div" id="write-message-div">
+            <form onsubmit="sendMessage(event)" class="new-message" id="new-message">
+                <label for="message" class="label" id="new-msg-label">New Message</label>
+                <input type="text" class="message" id="message" name="message">
+                <label for="fileupload" class="label" id="fileuploadlabel">&#128248</label>
+                <input type="file" id="fileupload" name="fileupload" style="display: none;">
+                <button type="submit" class="send-btn" id="send-btn">Send</button>
+            </form>
+        </div>
     </div>
 </body>
 <script src="../chat.js"></script>
